@@ -64,21 +64,20 @@ function validateCooldown(obj, move){
 }
 
 function cooldownNextTurn(player, comp){
-    for(let i=0;i<4;i++){
+    for(let i = 0 ; i < 4 ; i++){
         if(player.moves[i].cooldown != player.cooldown[i]){
             player.cooldown[i]++;
         }
-        if (i<3)
+        if (i < 3)
             if(comp.moves[i].cooldown != comp.cooldown[i]){
                 comp.cooldown[i]++;
             }
-
     }
 }
 
 function printCooldown(obj){
     console.log(`\nВозможные действия для ${obj.name}`);
-    for(let i=0 ; i < 4 ; i++){
+    for(let i = 0 ; i < 4 ; i++){
         console.log(`${i}:  ${obj.moves[i].name} (готовность ${obj.cooldown[i]} из ${obj.moves[i].cooldown})`);
     }
     console.log("\n");
@@ -157,21 +156,14 @@ const player = {
         cooldown: [0,4,3,4]
     }
 
-
-
-
 //запрашиваем начальное здоровье
 player.maxHealth = readLine.question("Choose initial health: ");
-
 
 while(true){
     cooldownNextTurn(player, monster);
     printCooldown(player);
     calculateActions(player, turn(player), monster, turn(monster));
     
-
-
-
     console.log(`Player: ${player.maxHealth}hp\nMonster: ${monster.maxHealth}hp\n`);
 
     if(monster.maxHealth <= 0){
@@ -181,6 +173,5 @@ while(true){
     if(player.maxHealth <= 0){
         console.log(`${monster.name} побеждает`)
         break;
-    }
-    
+    }   
 }

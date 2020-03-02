@@ -13,10 +13,6 @@
 После получения всех ответов, программа выводит итоговое 
 количество правильных ответов.*/
 
-
-//во время запуска комп загружает 5 файлов
-
-// из каждого файла текст вопроса, номер правильного ответа заносится в объект.переменную типа file1 = {quiestion: "text", correctAnswer: "digit", allAnswers: "text"}
 const fs = require('fs');
 const readline = require('readline-sync');
 let countCorrectAnswers = 0;
@@ -29,7 +25,7 @@ packFiles = {
 };
 
 
-const path = 'C:\\Users\\afilippx\\Desktop\\learning\\nodejs\\questions\\'; //пишем сюда путь папки где лежат файлы с вопросами
+const path = 'C:\\Users\\afilippx\\Desktop\\learning\\nodejsTasks\\questions\\'; //пишем сюда путь папки где лежат файлы с вопросами
 
 function randomInteger(min, max) {
   min = Math.ceil(min);
@@ -66,7 +62,7 @@ function chooseRandomFive(count){
 
 function showAndCheck(data){
 	let userChoose = '';
-	console.log(`${data.question}\n${data.otherAnswers}\n`);
+	console.log(`\n${data.question}\n${data.otherAnswers}\n`);
 	do{
 	userChoose = readline.question('Enter your answer: ');
 	}while(checkCorrectInput(userChoose, data.countOfAnswers))
@@ -83,16 +79,13 @@ function separationFile(data){
 	let start = 0;
 	let countOfAnswers = 0;
 
-
 	let end = data.indexOf('Правильный') - 4;
 	question = data.slice(start+9, end);
 	
-
 	start = end;
 	end  = data.indexOf('Выберите') - 4;
 	numCorAnswer = data.slice(start+22, end);
 	
-
 	start = end+5;
 	otherAnswers = data.slice(start-1);
 	
@@ -128,7 +121,7 @@ function chooseFiles(path, pack){
 }
 
 function checkCorrectInput(number, countOfAnswers){
-	if (!isFinite(number) || number < 0 || number > countOfAnswers || number==''){
+	if (!isFinite(number) || number < 1 || number > countOfAnswers || number==''){
 		console.log(`\n!!'${number}'  - неверное значение!!\n`);
 		return true;
 	}
@@ -137,8 +130,6 @@ function checkCorrectInput(number, countOfAnswers){
 
 
 try{
-	
-
 	//запоняем массив названиями путей файлов по порядку
 	packFiles.filesArray = chooseFiles(path, packFiles.filesArray);
 	//заполняем массив с вопросами с разделением на составляющие: вопрос, правильный ответ, другие ответы

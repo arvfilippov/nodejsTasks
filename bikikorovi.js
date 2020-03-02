@@ -38,7 +38,6 @@ function compareDigits(player, comp, amount){
 	
 	for(let i=0; i < amount; i++){
 
-		
 		for(let j=0; j < amount; j++){
 			
 			if (String(player)[i] == String(comp)[j]){
@@ -49,8 +48,6 @@ function compareDigits(player, comp, amount){
 
 			 		validPosition+=String(player)[i];
 			 		validMatches++;
-
-			 		
 			 	}else{
 			 		if(i>0 && i<amount && invalidPosition)
 			 			invalidPosition+=' и ';
@@ -105,8 +102,6 @@ let amount;
 					break;
 				}
 			}while(true) //цикл повторяется пока не будет повторяющихся цифр
-
-
 
 			//сравниваем числа
 			if(playerDigits == compsDigits){
