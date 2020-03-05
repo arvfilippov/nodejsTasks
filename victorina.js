@@ -25,7 +25,7 @@ packFiles = {
 };
 
 
-const path = 'C:\\Users\\afilippx\\Desktop\\learning\\nodejsTasks\\questions\\'; //пишем сюда путь папки где лежат файлы с вопросами
+const path = '.\\questions\\'; //пишем сюда путь папки где лежат файлы с вопросами
 
 function randomInteger(min, max) {
   min = Math.ceil(min);
@@ -117,7 +117,6 @@ function chooseFiles(path, pack){
 		pack[j] = allFiles[rndDigits[j]];
 	}
 
-	return pack;
 }
 
 function checkCorrectInput(number, countOfAnswers){
@@ -131,7 +130,7 @@ function checkCorrectInput(number, countOfAnswers){
 
 try{
 	//запоняем массив названиями путей файлов по порядку
-	packFiles.filesArray = chooseFiles(path, packFiles.filesArray);
+	chooseFiles(path, packFiles.filesArray);
 	//заполняем массив с вопросами с разделением на составляющие: вопрос, правильный ответ, другие ответы
 	for(let i = 0; i < countOfQuestions; i++){
 		const data = fs.readFileSync(packFiles.filesArray[i], "utf8");
