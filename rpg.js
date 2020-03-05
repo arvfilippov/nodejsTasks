@@ -166,11 +166,16 @@ while(true){
     
     console.log(`Player: ${player.maxHealth}hp\nMonster: ${monster.maxHealth}hp\n`);
 
-    if(monster.maxHealth <= 0){
-        console.log(`${player.name} побеждает`)
-        break;
+    if(monster.maxHealth < 1){
+    	if(player.maxHealth < 1){
+    		console.log('Ничья');
+    		break;
+    	}else{
+	        console.log(`${player.name} побеждает`)
+	        break;
+    	}
     }
-    if(player.maxHealth <= 0){
+    if(player.maxHealth < 1){
         console.log(`${monster.name} побеждает`)
         break;
     }   
